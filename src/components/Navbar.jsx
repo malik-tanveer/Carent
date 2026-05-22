@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MapPinned, ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -6,28 +6,51 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const location = useLocation();
+
+  // Active Link Function
+  const activeLink = (path) =>
+    location.pathname === path
+      ? "text-yellow-400"
+      : location.pathname === "/"
+      ? "text-white hover:text-yellow-400"
+      : "text-white hover:text-yellow-400";
+
   return (
     <nav className="absolute top-0 left-0 w-full z-50 px-4 md:px-8 pt-6 md:pt-10">
       
       <div className="flex items-center justify-between">
         
         {/* Logo */}
-        <div className="flex items-center gap-2 text-white">
-          <MapPinned className="text-yellow-400" size={30} />
+        <Link to="/" className="flex items-center gap-2">
+          <MapPinned
+            className={`${
+              location.pathname === "/"
+                ? "text-yellow-400"
+                : "text-yellow-500"
+            }`}
+            size={30}
+          />
 
-          <h1 className="text-3xl md:text-4xl font-sans tracking-wide">
+          <h1
+            className={`text-3xl md:text-4xl font-sans tracking-wide ${
+              location.pathname === "/"
+                ? "text-white"
+                : "text-black"
+            }`}
+          >
             Carent
           </h1>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:block bg-[#111111] px-10 py-4 rounded-3xl shadow-xl">
-          <ul className="flex items-center gap-10 text-white text-lg font-medium">
+          <ul className="flex items-center gap-10 text-lg font-medium">
 
             <li>
               <Link
                 to="/"
-                className="text-yellow-400 transition duration-300"
+                className={`${activeLink("/")} transition duration-300`}
               >
                 Home
               </Link>
@@ -36,7 +59,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="hover:text-yellow-400 transition duration-300"
+                className={`${activeLink("/about")} transition duration-300`}
               >
                 About
               </Link>
@@ -48,7 +71,13 @@ const Navbar = () => {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <div className="flex items-center gap-1 cursor-pointer hover:text-yellow-400 transition duration-300">
+              <div
+                className={`flex items-center gap-1 cursor-pointer transition duration-300 ${
+                  location.pathname !== "/"
+                    ? "text-white hover:text-yellow-400"
+                    : "text-white hover:text-yellow-400"
+                }`}
+              >
                 <span>Pages</span>
                 <ChevronDown size={18} />
               </div>
@@ -61,7 +90,7 @@ const Navbar = () => {
                     : "opacity-0 invisible -translate-y-2"
                 }`}
               >
-                <div className="flex flex-col gap-4 text-lg">
+                <div className="flex flex-col gap-4 text-lg text-white">
 
                   <Link to="/" className="hover:text-yellow-400 transition">
                     Home
@@ -123,7 +152,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/cars"
-                className="hover:text-yellow-400 transition duration-300"
+                className={`${activeLink("/cars")} transition duration-300`}
               >
                 Cars
               </Link>
@@ -132,7 +161,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contact"
-                className="hover:text-yellow-400 transition duration-300"
+                className={`${activeLink("/contact")} transition duration-300`}
               >
                 Contact
               </Link>
@@ -143,7 +172,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-white"
+          className={`lg:hidden ${
+            location.pathname === "/"
+              ? "text-white"
+              : "text-black"
+          }`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={32} /> : <Menu size={32} />}

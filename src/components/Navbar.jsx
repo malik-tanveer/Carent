@@ -1,17 +1,229 @@
 import { Link } from "react-router-dom";
+import { MapPinned, ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Navbar = () => {
-  return (
-    <div className="flex justify-between p-4 bg-black text-white">
-      <h1 className="text-xl font-bold">CarRental</h1>
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <div className="flex gap-4">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/cars">Cars</Link>
-        <Link to="/contact">Contact</Link>
+  return (
+    <nav className="absolute top-0 left-0 w-full z-50 px-4 md:px-8 pt-6 md:pt-10">
+      
+      <div className="flex items-center justify-between">
+        
+        {/* Logo */}
+        <div className="flex items-center gap-2 text-white">
+          <MapPinned className="text-yellow-400" size={30} />
+
+          <h1 className="text-3xl md:text-4xl font-sans tracking-wide">
+            Carent
+          </h1>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:block bg-[#111111] px-10 py-4 rounded-3xl shadow-xl">
+          <ul className="flex items-center gap-10 text-white text-lg font-medium">
+
+            <li>
+              <Link
+                to="/"
+                className="text-yellow-400 transition duration-300"
+              >
+                Home
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/about"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                About
+              </Link>
+            </li>
+
+            {/* Dropdown */}
+            <li
+              className="relative"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <div className="flex items-center gap-1 cursor-pointer hover:text-yellow-400 transition duration-300">
+                <span>Pages</span>
+                <ChevronDown size={18} />
+              </div>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute top-14 left-0 w-64 bg-[#1a1a1a] rounded-2xl p-4 shadow-2xl transition-all duration-300 ${
+                  showDropdown
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-2"
+                }`}
+              >
+                <div className="flex flex-col gap-4 text-lg">
+
+                  <Link to="/" className="hover:text-yellow-400 transition">
+                    Home
+                  </Link>
+
+                  <Link
+                    to="/about"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    About
+                  </Link>
+
+                  <Link
+                    to="/cars"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    Cars
+                  </Link>
+
+                  <Link
+                    to="/blogs"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    Blogs
+                  </Link>
+
+                  <Link
+                    to="/contact"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    Contacts
+                  </Link>
+
+                  <Link
+                    to="/faqs"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    FAQs
+                  </Link>
+
+                  <Link
+                    to="/terms"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    Terms & Conditions
+                  </Link>
+
+                  <Link
+                    to="/privacy-policy"
+                    className="hover:text-yellow-400 transition"
+                  >
+                    Privacy Policy
+                  </Link>
+
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <Link
+                to="/cars"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                Cars
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/contact"
+                className="hover:text-yellow-400 transition duration-300"
+              >
+                Contact
+              </Link>
+            </li>
+
+          </ul>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden text-white"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <X size={32} /> : <Menu size={32} />}
+        </button>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          menuOpen ? "max-h-[700px] mt-6" : "max-h-0"
+        }`}
+      >
+        <div className="bg-[#111111] rounded-3xl p-6 text-white shadow-2xl">
+          
+          <div className="flex flex-col gap-6 text-lg">
+
+            <Link to="/" className="text-yellow-400">
+              Home
+            </Link>
+
+            <Link
+              to="/about"
+              className="hover:text-yellow-400 transition"
+            >
+              About
+            </Link>
+
+            {/* Mobile Dropdown */}
+            <div>
+              <div
+                onClick={() => setShowDropdown(!showDropdown)}
+                className="flex items-center justify-between cursor-pointer hover:text-yellow-400 transition"
+              >
+                <span>Pages</span>
+                <ChevronDown
+                  size={18}
+                  className={`transition duration-300 ${
+                    showDropdown ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  showDropdown ? "max-h-96 mt-4" : "max-h-0"
+                }`}
+              >
+                <div className="flex flex-col gap-4 pl-4 text-base text-gray-300">
+
+                  <Link to="/">Home</Link>
+                  <Link to="/about">About</Link>
+                  <Link to="/cars">Cars</Link>
+                  <Link to="/blogs">Blogs</Link>
+                  <Link to="/contact">Contacts</Link>
+                  <Link to="/faqs">FAQs</Link>
+                  <Link to="/terms">Terms & Conditions</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
+
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/cars"
+              className="hover:text-yellow-400 transition"
+            >
+              Cars
+            </Link>
+
+            <Link
+              to="/contact"
+              className="hover:text-yellow-400 transition"
+            >
+              Contact
+            </Link>
+
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

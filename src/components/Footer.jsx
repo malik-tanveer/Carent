@@ -94,26 +94,6 @@ const Footer = () => {
                 Instructions
               </p>
 
-              <p className="hover:text-yellow-400 transition cursor-pointer">
-                Password Protected
-              </p>
-
-              <p className="hover:text-yellow-400 transition cursor-pointer">
-                Licenses
-              </p>
-
-              <p className="hover:text-yellow-400 transition cursor-pointer">
-                Error 404
-              </p>
-
-              <p className="hover:text-yellow-400 transition cursor-pointer">
-                Changelog
-              </p>
-
-              <p className="hover:text-yellow-400 transition cursor-pointer">
-                Link in Bio
-              </p>
-
             </div>
           </div>
         </div>
@@ -128,11 +108,11 @@ const Footer = () => {
           <p className="text-gray-300 text-center md:text-left text-base">
             Designed by{" "}
             <span className="text-yellow-400 cursor-pointer">
-              Webestica
+              Tanveer
             </span>
             , Powered by{" "}
             <span className="text-yellow-400 cursor-pointer">
-              Webflow
+              Nimra
             </span>
           </p>
 

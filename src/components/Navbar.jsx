@@ -17,7 +17,7 @@ const Navbar = () => {
       : "text-white hover:text-yellow-400";
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 px-4 md:px-8 pt-6 md:pt-10">
+    <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 pt-6 md:pt-10">
       
       <div className="flex items-center justify-between">
         
@@ -65,7 +65,6 @@ const Navbar = () => {
               </Link>
             </li>
 
-            {/* Dropdown */}
             <li
               className="relative"
               onMouseEnter={() => setShowDropdown(true)}
@@ -82,7 +81,6 @@ const Navbar = () => {
                 <ChevronDown size={18} />
               </div>
 
-              {/* Dropdown Menu */}
               <div
                 className={`absolute top-14 left-0 w-64 bg-[#1a1a1a] rounded-2xl p-4 shadow-2xl transition-all duration-300 ${
                   showDropdown
@@ -170,7 +168,6 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className={`lg:hidden ${
             location.pathname === "/"

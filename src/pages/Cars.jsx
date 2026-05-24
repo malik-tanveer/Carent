@@ -155,7 +155,7 @@ const Cars = () => {
       : carsData.filter((car) => car.category === activeCategory);
 
   return (
-    <section className=" py-24 mt-10 px-4 md:px-10 overflow-hidden">
+    <section className="py-24 mt-20 px-4 md:px-10 overflow-hidden">
       {/* Heading */}
       <motion.h1
         key={activeCategory}

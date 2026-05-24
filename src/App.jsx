@@ -9,7 +9,6 @@ import Cars from "./pages/Cars";
 import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
 import FAQS from "./pages/FAQS";
-import Helps from "./pages/Helps";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 
@@ -25,7 +24,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/faqs" element={<FAQS />} />
-        <Route path="/helps" element={<Helps />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
       </Routes>

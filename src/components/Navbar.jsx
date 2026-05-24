@@ -137,7 +137,7 @@ const Navbar = () => {
                   </Link>
 
                   <Link
-                    to="/privacy-policy"
+                    to="/privacy"
                     className="hover:text-yellow-400 transition"
                   >
                     Privacy Policy

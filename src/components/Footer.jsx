@@ -108,11 +108,11 @@ const Footer = () => {
           <p className="text-gray-300 text-center md:text-left text-base">
             Designed by{" "}
             <span className="text-yellow-400 cursor-pointer">
-              Tanveer
+              Webestica
             </span>
             , Powered by{" "}
             <span className="text-yellow-400 cursor-pointer">
-              Nimra
+              Webflow
             </span>
           </p>
 

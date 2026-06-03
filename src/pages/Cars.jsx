@@ -14,6 +14,10 @@ import car9 from "/car9.png";
 import car10 from "/car10.png";
 import car11 from "/car11.png";
 import car12 from "/car12.png";
+import car13 from "/car13.png";
+import car14 from "/car14.avif";
+import car15 from "/car15.jpg";
+import car16 from "/car16.jfif";
 
 const Cars = () => {
   const categories = [
@@ -145,6 +149,46 @@ const Cars = () => {
       luggage: "2 bags",
       image: car12,
     },
+    {
+      id: 13,
+      title: "BMW M4 Coupe",
+      category: "Business",
+      price: 320,
+      seats: 4,
+      gearbox: "Automatic",
+      luggage: "2 bags",
+      image: car13,
+    },
+    {
+      id: 14,
+      title: "Kia Sportage",
+      category: "Family",
+      price: 240,
+      seats: 5,
+      gearbox: "Automatic",
+      luggage: "4 bags",
+      image: car14,
+    },
+    {
+      id: 15,
+      title: "Jeep Wrangler",
+      category: "Adventure",
+      price: 350,
+      seats: 5,
+      gearbox: "Manual",
+      luggage: "5 bags",
+      image: car15,
+    },
+    {
+      id: 16,
+      title: "Luxury Limousine",
+      category: "Wedding",
+      price: 550,
+      seats: 8,
+      gearbox: "Automatic",
+      luggage: "6 bags",
+      image: car16,
+    },
   ];
 
   const [activeCategory, setActiveCategory] = useState("All cars");
@@ -181,11 +225,10 @@ const Cars = () => {
             whileTap={{ scale: 0.95 }}
             key={index}
             onClick={() => setActiveCategory(item)}
-            className={`px-6 py-3 rounded-lg text-lg transition-all duration-300 ${
-              activeCategory === item
+            className={`px-6 py-3 rounded-lg text-lg transition-all duration-300 ${activeCategory === item
                 ? "bg-black text-yellow-400"
                 : "bg-yellow-400 text-black hover:bg-black hover:text-yellow-400"
-            }`}
+              }`}
           >
             {item}
           </motion.button>

@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Cars from "./pages/Cars";
@@ -26,6 +26,7 @@ function App() {
         <Route path="/faqs" element={<FAQS />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
